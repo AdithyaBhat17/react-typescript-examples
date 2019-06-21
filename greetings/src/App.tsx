@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 interface Props {
@@ -9,7 +9,10 @@ interface Props {
 
 const getExclamationMarks = (level: number) => Array(level + 1).join('!')
 
-const App: React.FC<Props> = ({name, enthusiasmLevel}) => {
+const App: React.FC<Props> = ({name, enthusiasmLevel = 1}) => {
+  if(enthusiasmLevel <= 0)
+    throw new Error('Cheer up big man :)')
+
   const [enthusiasm, setEnthusiasm] = React.useState(enthusiasmLevel || 1)
   const [username, setUserame] = React.useState(name)
 
